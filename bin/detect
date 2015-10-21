@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# We assume that since there's a CMakeLists.txt in the root that this is
+# a simple CMake project
+if [ -f $1/CMakeLists.txt ]; then
+  echo "SimpleCMake"
+  exit 0
+else
+  exit 1
+fi
