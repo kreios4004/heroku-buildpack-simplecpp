@@ -12,7 +12,7 @@ mkdir -p $CACHE_DIR
 pushd $CACHE_DIR
   if [ ! -f $CACHE_DIR/$CMAKE_FILE ]; then
     echo "-----> Downloading CMake"
-    curl $CMAKE_PATH
+    curl -sO $CMAKE_PATH
     tar -xzvf $CMAKE_FILE
   fi
 popd
