@@ -5,7 +5,7 @@ function export_env_dir {
   ENV_DIR=$3
   if [ -d "$ENV_DIR" ]; then
     for e in $(ls $ENV_DIR); do
-      echo "$e" && export "$e=$(cat $ENV_DIR/$e)"
+      echo "       $e" && export "$e=$(cat $ENV_DIR/$e)"
       :
     done
   fi
@@ -29,9 +29,10 @@ popd
 
 mkdir -p $BUILD_DIR/build
 pushd $BUILD_DIR/build
+  echo "-----> Importing environment variables"
+  export_env_dir
   echo "-----> Running CMake"
   $CACHE_DIR/$CMAKE_DIR/bin/cmake $BUILD_DIR
   echo "-----> Running Make"
-  export_env_dir
   make
 popd
