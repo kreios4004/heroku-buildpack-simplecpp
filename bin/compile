@@ -30,9 +30,15 @@ popd
 mkdir -p $BUILD_DIR/build
 pushd $BUILD_DIR/build
   echo "-----> Importing environment variables"
+
+  export HEROKU_BUILD_DIR=$BUILD_DIR
+  export HEROKU_CACHE_DIR=$CACHE_DIR
+  export HEROKU_ENV_DIR=$ENV_DIR
   export_env_dir
+
   echo "-----> Running CMake"
   $CACHE_DIR/$CMAKE_DIR/bin/cmake $BUILD_DIR
+
   echo "-----> Running Make"
   make
 popd
