@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-function export_env_dir {
+export_env_dir {
   ENV_DIR=$3
   if [ -d "$ENV_DIR" ]; then
     for e in $(ls $ENV_DIR); do
