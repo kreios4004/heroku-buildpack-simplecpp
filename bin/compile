@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-export_env_dir() {
-  env_dir=$3
-  if [ -d "$env_dir" ]; then
-    for e in $(ls $env_dir); do
-      echo "$e" && export "$e=$(cat $env_dir/$e)"
+function export_env_dir {
+  ENV_DIR=$3
+  if [ -d "$ENV_DIR" ]; then
+    for e in $(ls $ENV_DIR); do
+      echo "$e" && export "$e=$(cat $ENV_DIR/$e)"
       :
     done
   fi
@@ -32,6 +32,6 @@ pushd $BUILD_DIR/build
   echo "-----> Running CMake"
   $CACHE_DIR/$CMAKE_DIR/bin/cmake $BUILD_DIR
   echo "-----> Running Make"
-  export_env_dir()
+  export_env_dir
   make
 popd
