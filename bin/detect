@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # We assume that since there's a CMakeLists.txt in the root that this is
 # a simple CMake project
