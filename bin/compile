@@ -1,8 +1,11 @@
 #!/bin/bash
 set -e
 
-export_env_dir {
-  ENV_DIR=$3
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+function export_env_dir {
   if [ -d "$ENV_DIR" ]; then
     for e in $(ls $ENV_DIR); do
       echo "       $e" && export "$e=$(cat $ENV_DIR/$e)"
@@ -10,9 +13,6 @@ export_env_dir {
     done
   fi
 }
-
-BUILD_DIR=$1
-CACHE_DIR=$2
 
 CMAKE_PATH="https://cmake.org/files/v3.2/cmake-3.2.3-Linux-x86_64.tar.gz"
 CMAKE_FILE="${CMAKE_PATH##*/}"
